@@ -6,5 +6,5 @@ tqdm
 scikit-learn
 img2vec-pytorch
 watchdog
-
+python-dotenv
 

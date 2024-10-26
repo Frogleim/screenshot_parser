@@ -51,7 +51,7 @@ def new_video(new_vido_path, player_id):
                 "starttime": str(formatted_datetime),
                 "endtime": str(formatted_datetime),
                 "duration": 300,
-                "event": "snapshot_processing",
+                "event": "new_video",
                 "video_url": f"{new_vido_path}",
                 "screenshot": base64_string
             }
@@ -59,7 +59,7 @@ def new_video(new_vido_path, player_id):
         message_payload = json.dumps(event_data)
         message_key = str(event_data["id"])
         try:
-            p.produce('upload_video', key=message_key, value=message_payload, callback=delivery_report)
+            p.produce('snapshot_processing', key=message_key, value=message_payload, callback=delivery_report)
             p.flush(10)
             print(p.list_topics())
         except Exception as e:

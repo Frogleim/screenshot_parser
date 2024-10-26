@@ -1,15 +1,18 @@
 import boto3
 import os
+from dotenv import load_dotenv
 
+
+load_dotenv()
 
 session = boto3.Session(
-    aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
+    aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
+    aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
     region_name='kz1'
 )
 s3 = session.client(
     service_name='s3',
-    endpoint_url=os.environ['ENDPOINT_URL']
+    endpoint_url=os.getenv('ENDPOINT_URL')
 )
 
 
@@ -41,11 +44,3 @@ consumer_config = {
     'error_cb': error_callback,  # Callback for errors
 }
 
-
-rabbitmq_config = {
-    'host': os.getenv('RABBITMQ_HOST'),
-    'port': os.getenv('RABBITMQ_PORT'),
-    'vhost': os.getenv('RABBITMQ_VHOST'),
-    'user': os.getenv('RABBITMQ_USER'),
-    'password': os.getenv('RABBITMQ_PASSWORD'),
-}
