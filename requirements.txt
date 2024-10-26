@@ -1,0 +1,10 @@
+confluent-kafka
+boto3
+opencv-python
+pillow
+tqdm
+scikit-learn
+img2vec-pytorch
+watchdog
+
+
