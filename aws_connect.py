@@ -2,7 +2,7 @@ import os.path
 from config import session
 import time
 import os
-
+import logger
 
 videos_count = 17
 tracked_files = set()
@@ -16,10 +16,21 @@ bucket_name = 'civi-led'
 all_files = []
 
 
-def download_video(path, file_name):
-    file_original_name = os.path.splitext(os.path.basename(file_name))[0]
-    downloaded_file_name = f'{path}{file_original_name}.mp4'
-    s3.download_file(bucket_name, file_name, downloaded_file_name)
+def download_video(path, file_name, file_unique_id):
+    # Generate the target download path
+    downloaded_file_name = f'{path}/{file_unique_id}.mp4'
+    if not os.path.exists(downloaded_file_name):
+        try:
+            # Download video from S3
+            s3.download_file(bucket_name, file_name, downloaded_file_name)
+            print(f'Video downloaded successfully to {downloaded_file_name}')
+        except FileNotFoundError as e:
+            logger.system_log_logger.error(f'Error in download_video: {e}')
+            raise
+    else:
+        print(f'File already exists at {downloaded_file_name}')
+    return downloaded_file_name
+
 
 
 def get_s3_file_list():
@@ -63,8 +74,8 @@ if __name__ == '__main__':
     #
     # monitor_storage(interval=60)
     # upload_video('./videos/video.mov', bucket_name=bucket_name, name_for_s3='videos/test.mp4')
-    data = get_s3_file_list()
-    print(data)
+    # data = get_s3_file_list()
+    # print(data)
     # delete_files(bucket_name=bucket_name, name_for_s3='test', prefix='videos')
-    # download_video('temp_videos/', 'videos/c0:74:2b:fe:83:b0/9d23a920-39c0-455f-9368-801f2949a08e.mp4')
+    download_video('./converter/data_dirs/temp_videos/', 'videos/c0:74:2b:fe:83:b0/9d23a920-39c0-455f-9368-801f2949a08e.mp4', '9d23a920-39c0-455f-9368-801f2949a08e')
     # create_dir(dir_name='Test_video')

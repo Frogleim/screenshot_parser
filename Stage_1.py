@@ -6,6 +6,7 @@ import producer
 
 def process_video(input_path,  output_path, player_id,  level=1):
     file_unique_id = os.path.splitext(os.path.basename(input_path))[0]
+    logger.system_log_logger.info(file_unique_id)
     os.mkdir(f'{output_path}/{file_unique_id}')
 
     cap = cv2.VideoCapture(input_path)

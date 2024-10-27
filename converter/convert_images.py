@@ -17,11 +17,3 @@ def images_to_base64(directory):
 
     return base64_images
 
-
-# Usage example:
-directory_path = "./data_dirs/ready_screenshots"
-images_base64_dict = images_to_base64(directory_path)
-
-# To print or check the result for a specific file:
-for filename, base64_string in images_base64_dict.items():
-    print(f"{filename}: {base64_string[:30]}...")  # Printing only the first 30 characters for brevity

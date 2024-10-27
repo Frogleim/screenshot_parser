@@ -1,0 +1,14 @@
+2024-10-27 20:30:09,103 - ERROR - Error in download_video: [Errno 2] No such file or directory: '/Users/gorbarseghyan/Desktop/projects/upload_video/data_dirs/temp_videos/9d23a920-39c0-455f-9368-801f2949a08e.mp4.f4733c3D'
+2024-10-27 20:30:50,882 - ERROR - Error in download_video: [Errno 2] No such file or directory: '/Users/gorbarseghyan/Desktop/projects/upload_video/data_dirs/temp_videos/9d23a920-39c0-455f-9368-801f2949a08e.mp4.9Fd20aDd'
+2024-10-27 20:32:16,152 - ERROR - Error in download_video: [Errno 2] No such file or directory: './data_dirs/temp_videos/9d23a920-39c0-455f-9368-801f2949a08e.mp4.de9C9cDc'
+2024-10-27 20:36:26,933 - INFO - temp_videos9d23a920-39c0-455f-9368-801f2949a08e
+2024-10-27 20:36:27,036 - INFO - Видео обработано. Скрины сохранены в /Users/gorbarseghyan/Desktop/projects/upload_video/converter/data_dirs/ready_screenshots
+2024-10-27 20:37:18,376 - INFO - temp_videos9d23a920-39c0-455f-9368-801f2949a08e
+2024-10-27 20:37:18,473 - INFO - Видео обработано. Скрины сохранены в /Users/gorbarseghyan/Desktop/projects/upload_video/converter/data_dirs/ready_screenshots
+2024-10-27 20:38:15,447 - INFO - 9d23a920-39c0-455f-9368-801f2949a08e
+2024-10-27 20:38:15,533 - INFO - Видео обработано. Скрины сохранены в /Users/gorbarseghyan/Desktop/projects/upload_video/converter/data_dirs/ready_screenshots
+2024-10-27 20:41:02,708 - INFO - 9d23a920-39c0-455f-9368-801f2949a08e
+2024-10-27 20:41:02,803 - INFO - Видео обработано. Скрины сохранены в /Users/gorbarseghyan/Desktop/projects/upload_video/converter/data_dirs/ready_screenshots
+2024-10-27 20:43:12,590 - INFO - 9d23a920-39c0-455f-9368-801f2949a08e
+2024-10-27 20:43:12,685 - INFO - Видео обработано. Скрины сохранены в /Users/gorbarseghyan/Desktop/projects/upload_video/converter/data_dirs/ready_screenshots
+2024-10-27 20:43:12,685 - INFO - Sending screenshot to playerid: c0:74:2b:fe:82:b4

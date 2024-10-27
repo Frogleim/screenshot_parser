@@ -30,11 +30,11 @@ def delivery_report(err, msg):
 
 
 def new_video(new_vido_path, player_id):
-
+    logger.system_log_logger.info(f'Sending screenshot to playerid: {player_id}')
     current_datetime = datetime.now()
     formatted_datetime = current_datetime.strftime("%Y-%m-%dT%H:%M:%S")
     is_failed_exist = check_event_error()
-    directory_path = "./data_dirs/ready_screenshots"
+    directory_path = "./converter/data_dirs/ready_screenshots"
     images_base64_dict = convert_images.images_to_base64(directory_path)
     for filename, base64_string in images_base64_dict.items():
         logger.system_log_logger.info(f"{filename}: {base64_string[:10]}...")  # Printing only the first 30 characters for brevity
@@ -62,6 +62,8 @@ def new_video(new_vido_path, player_id):
             p.produce('snapshot_processing', key=message_key, value=message_payload, callback=delivery_report)
             p.flush(10)
             print(p.list_topics())
+            logger.system_log_logger.info(f'Event sent successfully: {player_id}')
+
         except Exception as e:
             print(f"Error while sending event!\n{e}")
             with open('failed_event', 'w') as f:
