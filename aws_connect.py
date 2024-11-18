@@ -77,5 +77,5 @@ if __name__ == '__main__':
     # data = get_s3_file_list()
     # print(data)
     # delete_files(bucket_name=bucket_name, name_for_s3='test', prefix='videos')
-    download_video('./converter/data_dirs/temp_videos/', 'videos/c0:74:2b:fe:83:b0/9d23a920-39c0-455f-9368-801f2949a08e.mp4', '9d23a920-39c0-455f-9368-801f2949a08e')
+    download_video('images_converter/data_dirs/temp_videos/', 'videos/c0:74:2b:fe:83:b0/9d23a920-39c0-455f-9368-801f2949a08e.mp4', '9d23a920-39c0-455f-9368-801f2949a08e')
     # create_dir(dir_name='Test_video')

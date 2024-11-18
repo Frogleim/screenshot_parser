@@ -14,8 +14,8 @@ grandparent_dir = os.path.dirname(parent_dir)
 # files_dir = os.path.join(grandparent_dir, "civi-ai/screenshot_parser")
 files_dir = os.path.join(grandparent_dir, "civi-ai/screenshot_parser")
 
-temp_videos = os.path.join(files_dir, "converter/data_dirs/temp_videos")
-screenshots = os.path.join(files_dir, "converter/data_dirs/ready_screenshots")
+temp_videos = os.path.join(files_dir, "images_converter/data_dirs/temp_videos")
+screenshots = os.path.join(files_dir, "images_converter/data_dirs/ready_screenshots")
 
 
 def consumer():
@@ -65,14 +65,18 @@ def process_new_video_event(event_data):
     if event_data["event"] == "upload":
         file_unique_id = os.path.splitext(os.path.basename(event_data['video_url']))[0]
         print(temp_videos, event_data["video_url"], file_unique_id)
+        starttime = event_data["starttime"]
+        endtime = event_data["endtime"]
         downloaded_file_path = download_video(temp_videos, event_data['video_url'], file_unique_id)
 
         # Verify if the video was downloaded correctly
         if os.path.exists(downloaded_file_path):
             process_video(input_path=downloaded_file_path,
                           output_path=screenshots,
-                          player_id=event_data['playerid'])
-            clean_temp_videos(downloaded_file_path)
+                          player_id=event_data['playerid'],
+                          start_time=starttime,
+                          end_time=endtime)
+            # clean_temp_videos(downloaded_file_path)
         else:
             logger.system_log_logger.error(f'Failed to download video: {downloaded_file_path}')
     elif event_data["event"] == "delete":
